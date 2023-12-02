@@ -1,15 +1,32 @@
-import { status } from '../api';
+import axios from '../api/axios';
 import { useState, useEffect } from 'react'
 
 const Footer = () => {
   const [ apiStatus, setAPIStatus ] = useState({'version': ''});
 
   useEffect(() => {
+    let isMounted = true;
+    const controller = new AbortController();
+
     const fetchStatus = async () => {
-      const rep = await status();
-      setAPIStatus(rep);
+      try {
+        const rep = await axios.get('status', {signal: controller.signal });
+        isMounted && setAPIStatus(rep.data);
+      } catch (error) {
+        if (error.response && error.response.status === 503) {
+          isMounted && setAPIStatus(error.response.data);
+        } else {
+          isMounted && setAPIStatus({'status': 'offline', 'uptime': '', 'version': ''});
+        }
+      }
     }
+
     fetchStatus();
+
+    return () => {
+      isMounted = false;
+      controller.abort();
+    }
   }, [])
 
   return (
