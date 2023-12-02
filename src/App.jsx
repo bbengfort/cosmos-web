@@ -1,10 +1,12 @@
 import { useState } from 'react'
 import './App.css'
 
-function App() {
+import Footer from './components/Footer.jsx'
+
+const App = () => {
   return (
     <>
-      <h1>Hello World</h1>
+      <Footer />
     </>
   )
 }
