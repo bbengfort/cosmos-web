@@ -1,4 +1,4 @@
-import api from '../api';
+import { status } from '../api';
 import { useState, useEffect } from 'react'
 
 const Footer = () => {
@@ -6,12 +6,9 @@ const Footer = () => {
 
   useEffect(() => {
     const fetchStatus = async () => {
-      const rep = await api.get("/status");
-      if (rep.status == 200) {
-        setAPIStatus(rep.data);
-      }
+      const rep = await status();
+      setAPIStatus(rep);
     }
-
     fetchStatus();
   }, [])
 

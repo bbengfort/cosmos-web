@@ -1,8 +1,25 @@
 import axios from "axios";
+import config from '../config';
 
-const api = axios.create({
-  baseURL: 'http://localhost:8888/v1/',
+const API = axios.create({
+  baseURL: config.apiBaseURL,
   timeout: 15000,
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  withCredentials: true
 });
 
-export default api;
+export const status = async () => {
+  try {
+    const rep = await API.get('status');
+    return rep.data
+  } catch (error) {
+    if (error.response && error.response.status === 503) {
+      return error.response.data;
+    }
+    return {'status': 'offline', 'uptime': '', 'version': ''};
+  }
+};
+
+export default API;
