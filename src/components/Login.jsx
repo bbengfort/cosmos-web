@@ -66,8 +66,9 @@ const Login = () => {
             <Form.Control
               type="text"
               placeholder="email"
-              autoComplete="email"
-              {...register("email", { required: true })}
+              autoComplete="username"
+              id="username" name="username"
+              {...register("username", { required: true })}
             />
             <Form.Label>Email</Form.Label>
           </div>
@@ -76,6 +77,7 @@ const Login = () => {
               type="password"
               placeholder="password"
               autoComplete="current-password"
+              id="password" name="password"
               {...register("password", { required: true })}
             />
             <Form.Label>Password</Form.Label>

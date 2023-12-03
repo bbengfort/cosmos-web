@@ -4,6 +4,7 @@ import Unauthorized from './components/Unauthorized.jsx';
 import Home from './components/Home.jsx';
 import Admin from './components/Admin.jsx'
 import Login from './components/Login.jsx';
+import Logout from './components/Logout.jsx';
 
 import RequireAuth from './components/RequireAuth.jsx';
 import { Routes, Route } from 'react-router-dom';
@@ -19,6 +20,7 @@ const App = () => {
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route path="login" element={<Login />} />
+        <Route path="logout" element={<Logout />} />
         <Route path="not-allowed" element={<Unauthorized />} />
 
         <Route element={<RequireAuth allowedRoles={[ROLES.Admin, ROLES.Player, ROLES.Observer]} />}>
