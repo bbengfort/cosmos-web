@@ -34,10 +34,12 @@ $offcanvas-box-shadow: 0 1rem 3rem rgba(0, 0, 0, .175);
 @import "bootstrap/scss/functions";
 
 // Customize some defaults
-$body-color: #333;
-$body-bg: #fff;
-$border-radius: .4rem;
-$success: #7952b3;
+$font-family-sans-serif: "Space Grotesk", Arial, sans-serif;
+$font-family-monospace: "Space Mono", Consolas, "Courier New", monospace;
+$headings-font-family: "Rubik Moonrocks", "Space Grotesk", sans-serif;
+
+// Dark Theme
+$body-bg-dark: #040c24;
 
 // Required
 @import "bootstrap/scss/variables";
