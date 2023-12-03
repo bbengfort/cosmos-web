@@ -9,9 +9,9 @@ import RequireAuth from './components/RequireAuth.jsx';
 import { Routes, Route } from 'react-router-dom';
 
 const ROLES = {
-  'Admin': 'admin',
-  'Player': 'player',
-  'Observer': 'observer',
+  'Admin': 'Admin',
+  'Player': 'Player',
+  'Observer': 'Observer',
 }
 
 const App = () => {
